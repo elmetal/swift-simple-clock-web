@@ -7,8 +7,8 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     env:
-      SWIFT: swift-DEVELOPMENT-SNAPSHOT-2024-04-27-a
-      SWIFT_WASM: swift-wasm-DEVELOPMENT-SNAPSHOT-2024-04-28-a
+      SWIFT: swift-6.1.2-RELEASE
+      SWIFT_WASM: swift-wasm-6.1-RELEASE
     steps:
       - uses: actions/checkout@v4
 
