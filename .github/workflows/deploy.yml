@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-22.04
     env:
       SWIFT_WASM: swift-wasm-6.1-RELEASE
+      SWIFT_WASM_CHECKSUM: 7550b4c77a55f4b637c376f5d192f297fe185607003a6212ad608276928db992
     steps:
       - uses: actions/checkout@v4
 
@@ -29,7 +30,7 @@ jobs:
         working-directory: /home/runner
 
       - name: Install Wasm SDK
-        run: swift sdk install https://github.com/swiftwasm/swift/releases/download/${{ env.SWIFT_WASM }}/${{ env.SWIFT_WASM }}-wasm32-unknown-wasi.artifactbundle.zip
+        run: swift sdk install https://github.com/swiftwasm/swift/releases/download/${{ env.SWIFT_WASM }}/${{ env.SWIFT_WASM }}-wasm32-unknown-wasi.artifactbundle.zip --checksum ${{ env.SWIFT_WASM_CHECKSUM }}
   
       - name: Build Swift
         run: bin/build
