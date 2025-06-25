@@ -7,7 +7,6 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     env:
-      SWIFT: swift-6.1.2-RELEASE
       SWIFT_WASM: swift-wasm-6.1-RELEASE
     steps:
       - uses: actions/checkout@v4
@@ -21,7 +20,12 @@ jobs:
           zlib1g-dev binaryen
 
       - name: Download Swift
-        run: curl -L -O https://download.swift.org/development/ubuntu2204/${{ env.SWIFT }}/${{ env.SWIFT }}-ubuntu22.04.tar.gz
+        run: |
+          curl -O https://download.swift.org/swiftly/linux/swiftly-$(uname -m).tar.gz && \
+            tar zxf swiftly-$(uname -m).tar.gz && \
+            ./swiftly init --quiet-shell-followup && \
+            . "${SWIFTLY_HOME_DIR:-$HOME/.local/share/swiftly}/env.sh" && \
+            hash -r
         working-directory: /home/runner
 
       - run: tar xzf ${{ env.SWIFT }}-ubuntu22.04.tar.gz
