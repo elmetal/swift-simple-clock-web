@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     env:
       SWIFT_WASM: swift-wasm-6.1-RELEASE
       SWIFT_WASM_CHECKSUM: 7550b4c77a55f4b637c376f5d192f297fe185607003a6212ad608276928db992
@@ -45,6 +45,6 @@ jobs:
     permissions:
       id-token: write
       pages: write
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/deploy-pages@v4
